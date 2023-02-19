@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { Box } from "@mui/material";
+import React, { useState } from "react";
+import {Route,Routes, useLocation, useNavigate, } from "react-router-dom";
+import Auth from './component/auth';
+import Home from './component/home';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ForgotPassword from './component/forgot.password';
 
-function App() {
+const  App= ()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+     <ToastContainer
+    position="top-right"
+    autoClose={3000}
+    limit={1}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="colored"
+     />
+    <Routes>
+    <Route exact path="/" element={<Auth/>}/>
+    <Route exact path="/home" element={<Home/>}/>
+    <Route exact path="/forgot-password" element={<ForgotPassword/>}/>
+    </Routes>
+  </>
+   )
 }
 
 export default App;
